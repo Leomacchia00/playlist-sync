@@ -52,11 +52,15 @@ app.post('/api/chat', async (req, res) => {
     return res.json({ reply });
   } catch (err) {
     console.error(err);
+    const statusCode =
+      typeof (err as { statusCode?: unknown }).statusCode === 'number'
+        ? (err as { statusCode: number }).statusCode
+        : undefined;
     return res.status(502).json({
       error:
         err instanceof Error && err.message.includes('MISTRAL_API_KEY')
           ? err.message
-          : "Errore nella chiamata all'API Mistral.",
+          : `Errore nella chiamata all'API Mistral${statusCode ? ` (HTTP ${statusCode})` : ''}.`,
     });
   }
 });

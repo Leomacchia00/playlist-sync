@@ -2,6 +2,7 @@ import express from 'express';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chatCompletion, type ChatMessage } from './mistral.js';
+import { resolveTrack } from './resolve.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -25,6 +26,28 @@ app.use((req, res, next) => {
 });
 
 app.use(express.static(path.join(__dirname, '..', 'public')));
+
+app.get('/api/resolve', async (req, res) => {
+  const url = typeof req.query.url === 'string' ? req.query.url : '';
+  let parsed: URL;
+  try {
+    parsed = new URL(url);
+  } catch {
+    return res.status(400).json({ error: 'Parametro "url" mancante o non valido.' });
+  }
+  if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') {
+    return res.status(400).json({ error: 'Sono accettati solo link http/https.' });
+  }
+  try {
+    const result = await resolveTrack(url);
+    return res.json(result);
+  } catch (err) {
+    console.error(err);
+    return res
+      .status(502)
+      .json({ error: 'Impossibile risolvere il link: i servizi esterni non rispondono.' });
+  }
+});
 
 app.post('/api/chat', async (req, res) => {
   const raw: unknown[] = Array.isArray(req.body?.messages) ? req.body.messages : [];

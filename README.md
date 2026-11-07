@@ -88,7 +88,23 @@ docker run -p 3000:3000 -e MISTRAL_API_KEY=la-tua-chiave playlist-sync
 In produzione metti l'app dietro un reverse proxy **HTTPS** (Caddy, nginx, ecc.):
 il service worker della PWA funziona solo su HTTPS (o localhost).
 
+## Risoluzione link senza AI (core dell'app)
+
+Incollando un link di un brano (Spotify, Apple Music, YouTube, ecc.) l'app lo
+risolve **senza ninguna chiave AI**: `GET /api/resolve?url=...` interroga
+song.link/odesli (gratis) e, come fallback, gli oEmbed pubblici di Spotify e
+l'API iTunes. Restituisce titolo, artista, copertina e i link su tutte le
+piattaforme (Tidal, Spotify, Apple Music, Deezer, YouTube Music, ecc.).
+
+I link delle piattaforme sono deep link: **su telefono aprono direttamente
+l'app installata** (es. Tidal), altrimenti il sito. L'AI (chat `/api/chat`)
+resta una feature opzionale: il core funziona anche senza `MISTRAL_API_KEY`.
+
 ## Endpoint
+
+`GET /api/resolve?url=<link>` → `{ title, artist, thumbnail, pageUrl, links: { tidal: { url, native }, ... }, source }`
+
+`POST /api/chat` (opzionale, richiede `MISTRAL_API_KEY`)
 
 `POST /api/chat`
 

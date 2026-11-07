@@ -110,3 +110,43 @@ header h1 {
   opacity: 0.5;
   cursor: default;
 }
+
+.resolve-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.resolve-card img {
+  width: 96px;
+  height: 96px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.resolve-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.platform-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.platform-links a {
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: #3b82f6;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.platform-links a.link-all {
+  background: transparent;
+  border: 1px solid #3b82f6;
+  color: #7aa8f8;
+}

@@ -67,6 +67,27 @@ in locale `http://localhost` è considerato un contesto sicuro.
 
 Per rigenerare le icone: `npm run icons`.
 
+## Deploy
+
+La chiave `MISTRAL_API_KEY` va impostata come **variabile d'ambiente** sulla
+piattaforma di hosting, mai nel codice.
+
+### Vercel (zero-config, HTTPS automatico)
+
+1. Importa il repository su Vercel.
+2. Nelle impostazioni del progetto aggiungi la variabile d'ambiente `MISTRAL_API_KEY`.
+3. Deploy: `public/` viene servito come statico (manifest, service worker e icone compresi) e `api/chat.ts` gira come funzione serverless su `POST /api/chat` (vedi `vercel.json`).
+
+### Docker / qualsiasi host (Render, Fly.io, Railway, VPS…)
+
+```bash
+docker build -t playlist-sync .
+docker run -p 3000:3000 -e MISTRAL_API_KEY=la-tua-chiave playlist-sync
+```
+
+In produzione metti l'app dietro un reverse proxy **HTTPS** (Caddy, nginx, ecc.):
+il service worker della PWA funziona solo su HTTPS (o localhost).
+
 ## Endpoint
 
 `POST /api/chat`

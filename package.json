@@ -1,0 +1,24 @@
+{
+  "name": "playlist-sync-chat",
+  "version": "0.1.0",
+  "private": true,
+  "description": "App web minima con chat che chiama l'API Mistral tramite l'SDK TypeScript ufficiale",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/server.js",
+    "icons": "node scripts/generate-icons.mjs"
+  },
+  "dependencies": {
+    "@mistralai/mistralai": "^1.0.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.0"
+  }
+}

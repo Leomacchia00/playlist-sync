@@ -1,0 +1,152 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  background: #0f1115;
+  color: #e8eaf0;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.chat {
+  width: 100%;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 12px;
+}
+
+header h1 {
+  margin: 8px 0 0;
+  font-size: 1.4rem;
+}
+
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+#install {
+  padding: 8px 14px;
+  border: 1px solid #3b82f6;
+  border-radius: 10px;
+  background: transparent;
+  color: #7aa8f8;
+  font-size: 0.9rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.hint {
+  margin: 4px 0 0;
+  color: #9aa3b2;
+  font-size: 0.9rem;
+}
+
+.messages {
+  flex: 1;
+  min-height: 320px;
+  max-height: 65vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px;
+}
+
+.msg {
+  max-width: 85%;
+  padding: 10px 14px;
+  border-radius: 14px;
+  white-space: pre-wrap;
+  line-height: 1.45;
+}
+
+.msg-user {
+  align-self: flex-end;
+  background: #3b82f6;
+  color: #fff;
+}
+
+.msg-assistant {
+  align-self: flex-start;
+  background: #1d2330;
+  border: 1px solid #2a3140;
+}
+
+.composer {
+  display: flex;
+  gap: 8px;
+}
+
+.composer input {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #2a3140;
+  background: #161a23;
+  color: inherit;
+  font-size: 1rem;
+}
+
+.composer button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #3b82f6;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.composer button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.resolve-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.resolve-card img {
+  width: 96px;
+  height: 96px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.resolve-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.platform-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.platform-links a {
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: #3b82f6;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.platform-links a.link-all {
+  background: transparent;
+  border: 1px solid #3b82f6;
+  color: #7aa8f8;
+}

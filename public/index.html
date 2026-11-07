@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Playlist Sync — Chat</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <meta name="theme-color" content="#0f1115" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Playlist Sync" />
+    <link rel="icon" type="image/png" href="icons/favicon-32.png" />
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="chat">
+      <header>
+        <div class="header-row">
+          <h1>Playlist Sync</h1>
+          <button id="install" type="button" hidden>Installa app</button>
+        </div>
+        <p class="hint" id="hint">
+          Incolla un link di una canzone (Spotify, Apple Music, ecc.) per vederla e aprirla sui tuoi servizi, oppure scrivi un messaggio.
+        </p>
+      </header>
+      <div id="messages" class="messages" aria-live="polite"></div>
+      <form id="form" class="composer">
+        <input
+          id="input"
+          type="text"
+          placeholder="Scrivi un messaggio o incolla un link…"
+          autocomplete="off"
+          required
+        />
+        <button type="submit" id="send">Invia</button>
+      </form>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
